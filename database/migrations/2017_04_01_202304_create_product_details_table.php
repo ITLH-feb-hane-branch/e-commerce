@@ -25,9 +25,9 @@ class CreateProductDetailsTable extends Migration {
             $table->float('price', 8, 2);
             $table->integer('quantity');
             $table->tinyInteger('status')->comment('0 => Inactive, 1 => Active');
-            $table->timestamp('created_at')->nullable();
+            $table->timestamp('created_at')->nullable()->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->integer('created_by');
-            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('updated_at')->nullable()->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->integer('updated_by');
         });
     }

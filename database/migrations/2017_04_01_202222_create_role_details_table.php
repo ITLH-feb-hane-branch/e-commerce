@@ -4,23 +4,22 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRoleDetailsTable extends Migration
-{
+class CreateRoleDetailsTable extends Migration {
+
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('role_details', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('name');
-			$table->tinyInteger('status')->comment('0 => Inactive, 1 => Active');
-			$table->timestamp('created_at')->nullable();
-			$table->integer('created_by');
-			$table->timestamp('updated_at')->nullable();
-			$table->integer('updated_by');            
+            $table->string('name');
+            $table->tinyInteger('status')->comment('0 => Inactive, 1 => Active');
+            $table->timestamp('created_at')->nullable()->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->integer('created_by');
+            $table->timestamp('updated_at')->nullable()->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->integer('updated_by');
         });
     }
 
@@ -29,8 +28,8 @@ class CreateRoleDetailsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('role_details');
     }
+
 }
