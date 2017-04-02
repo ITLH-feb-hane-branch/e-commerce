@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+//Route::get('/update', 'AdminsController@index');
+
+Route::get('/edit', function () {
+    return view('edit');
+});
