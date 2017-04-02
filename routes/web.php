@@ -28,7 +28,7 @@ Route::get('/shipping','ShippingDetailsController@index');
 //route for editing orders
 Route::get('/orders/edit/{id}','OrderDetailsController@edit');
 //route for updating orders
-Route::put('/update/{id}','OrderDetailsController@update');
+Route::put('/orders/update/{id}','OrderDetailsController@update');
 
 Route::get('/edit', function () {
     return view('edit');

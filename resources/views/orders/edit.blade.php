@@ -2,7 +2,7 @@
 @section('title', 'AdminLTE')
 @section('content_header')
 
-<form method="POST" action="/update/{{$orders->id}}">
+<form method="POST" action="/orders/update/{{$orders->id}}">
 <h1>Edit Order:{{$orders->id}}</h1>
   Status :
   @if($orders->status === 0)
