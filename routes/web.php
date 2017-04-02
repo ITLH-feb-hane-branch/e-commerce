@@ -21,6 +21,15 @@ Route::get('/home', 'HomeController@index');
 
 //Route::get('/update', 'AdminsController@index');
 
+//route for viewing order details
+Route::get('/orders','OrderDetailsController@index');
+//route for viewing shipping details
+Route::get('/shipping','ShippingDetailsController@index');
+//route for editing orders
+Route::get('/orders/edit/{id}','OrderDetailsController@edit');
+//route for updating orders
+Route::put('/update/{id}','OrderDetailsController@update');
+
 Route::get('/edit', function () {
     return view('edit');
 });
