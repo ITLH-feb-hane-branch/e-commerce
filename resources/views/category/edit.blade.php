@@ -6,7 +6,7 @@
 	<title>EDIT CATEGORIES</title>
 </head>
 <body>
-	<form method="POST" action="/update_category/{{$category->id}}">
+	<form method="POST" action="/category/update/{{$category->id}}">
 		Name:<input type="text" value="{{$category->name}}" name="name"><br>
 		@if($category->status === 1)
 		Status:<input type="checkbox" checked name="status"><br>
