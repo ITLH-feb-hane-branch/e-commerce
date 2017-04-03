@@ -15,7 +15,7 @@ class UsersController extends Controller
     public function index()
     {
         $view_details = User::all();
-        return view('users.list',compact('view_details'));
+        return view('users.userlist',compact('view_details'));
     }
 
     /**
@@ -58,7 +58,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $update = User::find($id);
+        return view('users/edit',compact('update'));
     }
 
     /**
@@ -70,7 +71,14 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = User::find($id);
+        $update->first_name = request('first_name');
+        $update->last_name  = request('last_name');
+        $update->contact_no = request('mobile_no');
+        $update->password   = request('password');
+        $update->save();
+        \Session::flash('update','Data Updated');
+        return redirect('users');
     }
 
     /**

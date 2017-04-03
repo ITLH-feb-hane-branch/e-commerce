@@ -18,7 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::get('/list', 'UsersController@index');
+Route::get('/users', 'UsersController@index');
+Route::get('users/edit/{id}', 'UsersController@edit');
+Route::put('/users/update/{id}', 'UsersController@update');
+
 
 
 //Route::get('/update', 'AdminsController@index');
