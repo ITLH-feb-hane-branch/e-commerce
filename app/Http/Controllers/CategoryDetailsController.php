@@ -7,14 +7,14 @@ use App\CategoryDetail;
 class CategoryDetailsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+         * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $category=CategoryDetail::all();
-        return view('list_category',compact('category'));
+        return view('category.list',compact('category'));
     }
 
     /**
@@ -24,7 +24,7 @@ class CategoryDetailsController extends Controller
      */
     public function create()
     {
-         return view('create_category');
+         return view('category.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class CategoryDetailsController extends Controller
             'name'=>request('name'),'status'=>$status,'created_at'=>request('created_at'),'updated_at'=>request('modified_at')
             ]);
         \Session::flash('create','inserted successfully');
-        return redirect('list_category'); 
+        return redirect('category/list'); 
     }
 
     /**
@@ -69,7 +69,7 @@ class CategoryDetailsController extends Controller
     public function edit($id)
     {
         $category=CategoryDetail::find($id);
-        return view('edit_category',compact('category'));
+        return view('category.edit',compact('category'));
     }
 
     /**
@@ -96,7 +96,7 @@ class CategoryDetailsController extends Controller
         $category->updated_at=request('modified_at');
         $category->save();
         \Session::flash('update','updated successfully');
-        return redirect('list_category');
+        return redirect('category/list');
     }
 
     /**
