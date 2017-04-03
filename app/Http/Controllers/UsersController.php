@@ -25,7 +25,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+      //  $view_details = User::all();
+        return view('users.create');
     }
 
     /**
@@ -35,8 +36,21 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {        
+
+        User::create([
+            'role_id'=> request('role_id'),
+            'first_name'=> request('first_name'),
+            'last_name'=> request('last_name'),
+            'contact_no'=> request('contact_no'),
+            'status'=> request('status'),
+            'email'=> request('email'),
+            'password'=> request('password')//,
+           // 'created_at'=> request('created_at'),
+            //'updated_at'=> request('updated_at')
+            ]);
+            \Session::flash('insert','Data Inserted');
+            return redirect('users');
     }
 
     /**

@@ -44,8 +44,11 @@
 </tr>
 @endforeach
 </table>
-<input type="Submit" value="Create"><br><br>
+<a href="users/create">Create New User</a><br>
 @if(Session :: has('update'))
 	{{Session :: get('update')}}
+@endif
+@if(Session :: has('insert'))
+	{{Session :: get('insert')}}
 @endif
 @stop
