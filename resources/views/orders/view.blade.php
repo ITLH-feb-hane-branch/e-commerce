@@ -29,7 +29,13 @@
       <td>{{$order->order_date}}</td>
       <td>{{$order->cancellation_reason}}</td>
       <td>{{$order->action_date}}</td>
-      <td>{{$order->status}}</td>
+      @if($order->status === 0)
+      <td>Pending</td>
+      @elseif($order->status === 1)
+      <td>Delivered</td>
+      @else
+      <td>Cancelled</td>
+      @endif
       <td>{{$order->created_at}}</td>
       <td>{{$order->created_by}}</td>
       <td>{{$order->updated_at}}</td>

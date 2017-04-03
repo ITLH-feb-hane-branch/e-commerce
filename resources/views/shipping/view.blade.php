@@ -19,7 +19,11 @@
       <td>{{$shipping->id}}</td>
       <td>{{$shipping->address}}</td>
       <td>{{$shipping->mobile_number}}</td>
-      <td>{{$shipping->status}}</td>
+      @if($shipping->status === 0)
+      <td>InActive</td>
+      @else
+      <td>Active</td>
+      @endif
       <td>{{$shipping->created_at}}</td>
       <td>{{$shipping->created_by}}</td>
       <td>{{$shipping->updated_at}}</td>
