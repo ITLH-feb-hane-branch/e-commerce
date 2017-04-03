@@ -6,7 +6,7 @@
 	<title>EDIT MATERIAL</title>
 </head>
 <body>
-	<form method="POST" action="/update_material/{{$material->id}}">
+	<form method="POST" action="/update/{{$material->id}}">
 		Name:<input type="text" value="{{$material->name}}" name="name"><br>
 		@if($material->status === 1)
 		Status:<input type="checkbox" checked name="status"><br>

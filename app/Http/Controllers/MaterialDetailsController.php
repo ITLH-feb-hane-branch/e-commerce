@@ -15,7 +15,7 @@ class MaterialDetailsController extends Controller
     public function index()
     {
         $material=MaterialDetail::all();
-        return view('list_material',compact('material'));
+        return view('material.list',compact('material'));
     }
 
     /**
@@ -25,7 +25,7 @@ class MaterialDetailsController extends Controller
      */
     public function create()
     {
-        return view('create_material');
+        return view('material/create');
     }
 
     /**
@@ -47,7 +47,7 @@ class MaterialDetailsController extends Controller
             'name'=>request('name'),'status'=>$status,'created_at'=>request('created_at'),'updated_at'=>request('modified_at')
             ]);
         \Session::flash('create','inserted successfully');
-        return redirect('list_material'); 
+        return redirect('material/list'); 
     }
 
     /**
@@ -70,7 +70,7 @@ class MaterialDetailsController extends Controller
     public function edit($id)
     {
         $material=MaterialDetail::find($id);
-        return view('edit_material',compact('material'));
+        return view('material.edit',compact('material'));
 
     }
 
@@ -98,7 +98,7 @@ class MaterialDetailsController extends Controller
         $material->updated_at=request('modified_at');
         $material->save();
         \Session::flash('update','updated successfully');
-        return redirect('list_material');
+        return redirect('material/list');
     }
 
     /**
