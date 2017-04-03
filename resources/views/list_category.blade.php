@@ -18,14 +18,14 @@
 		<tr>
 		<td>{{$data->id}}</td>
 		<td>{{$data->name}}</td>
-		<td><a href="edit/{{$data->id}}">Edit</a>
+		<td><a href="edit_category/{{$data->id}}">Edit</a>
 			<a href="#">View</a>
 			<a href="#">Delete</a></td>
 		</tr>
 		@endforeach
 
 	</table>
-	<a href="create">Create</a><br>
+	<a href="create_category">Create</a><br>
 
 		@if(Session::has('update'))
 			{{Session::get('update')}}
