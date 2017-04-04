@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 @section('title', 'AdminLTE')
 @section('content_header')
-
-<form method="POST" action="/orders/update/{{$orders->id}}">
+<div class="box box-info" style="padding-left:50px;">
+<form id="myform" method="POST" action="/orders/update/{{$orders->id}}">
 <h1>Edit Order:{{$orders->id}}</h1>
-  Status :
+  <label class="col-xs-3 control-label">Status</label>
   @if($orders->status === 0)
   Status :
   <input type="radio" name="status" value="0" checked> Pending
@@ -23,10 +23,15 @@
   <input type="radio" name="status" value="1"> Delivered
   <input type="radio" name="status" value="2"> Cancel<br><br>
   @endif
-  Action Date : <input type="date" name="actiondate" value="{{$orders->action_date}}"><br><br>
-  <input class="btn" type="submit" value="Update">
+  <label class="col-xs-3 control-label">Action Date</label>
+       <div class="col-xs-5">
+           <input type="date" class="form-control" name="actiondate" value="{{$orders->action_date}}" required/>
+       </div>
+  <br><br>
+  <input class="btn btn-default col-m-4" type="submit" value="Update">
   {{csrf_field()}}
   {{method_field('PUT')}}
 </form>
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<br>
+</div>
 @stop
