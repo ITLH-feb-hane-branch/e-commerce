@@ -41,3 +41,28 @@ Route::get('/orders/edit/{id}','OrderDetailsController@edit');
 //route for updating orders
 Route::put('/orders/update/{id}','OrderDetailsController@update');
 
+
+//Routes for category_details
+Route::get('/category/list', 'CategoryDetailsController@index');
+
+Route::get('/category/edit/{id}', 'CategoryDetailsController@edit');
+
+Route::put('/category/update/{id}', 'CategoryDetailsController@update');
+
+Route::get('/category/create', 'CategoryDetailsController@create');
+
+Route::put('/category/store', 'CategoryDetailsController@store');
+
+
+//Routes for material_details
+Route::get('/material/list', 'MaterialDetailsController@index');
+
+Route::get('/material/edit/{id}', 'MaterialDetailsController@edit');
+
+Route::put('/material/update/{id}', 'MaterialDetailsController@update');
+
+Route::put('/material/update/{id}', 'MaterialDetailsController@update');
+
+Route::get('/material/create', 'MaterialDetailsController@create');
+
+Route::put('/material/store', 'MaterialDetailsController@store');
