@@ -6,22 +6,22 @@
   <h1>Create a new User </h1><br>
  
   <form action="/users/store" method="POST">
-  <div>
+<div class="container">
   <div class="form-group">
     <label>Role Id</label>
     <input type="text" class="form-control" name="role_id" placeholder="0 or 1">
   </div>
   <div class="form-group">
     <label>First Name</label>
-    <input type="text" class="form-control" name="first_name" placeholder="Password">
+    <input type="text" class="form-control" name="first_name" placeholder="John">
   </div>
   <div class="form-group">
     <label>Last Name</label>
-    <input type="text" class="form-control" name="last_name" placeholder="Password">
+    <input type="text" class="form-control" name="last_name" placeholder="Lennon">
   </div>
   <div class="form-group">
     <label>Mobile_no</label>
-    <input type="" class="form-control" name="contact_no" placeholder="Email">
+    <input type="" class="form-control" name="contact_no" placeholder="">
   </div>
   <div class="form-group">
     <label>Status</label>
@@ -33,11 +33,11 @@
   </div>
   <div class="form-group">
     <label>Password</label>
-    <input type="text" class="form-control" name="password" placeholder="">
+    <input type="password" class="form-control" name="password" placeholder="">
   </div>
   
    <input type="Submit" name="Submit">
-	</div>
+</div>
 	{{csrf_field()}}
 		{{method_field('PUT')}}
  </form>

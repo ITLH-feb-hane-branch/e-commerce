@@ -28,6 +28,8 @@ Route::put('/users/update/{id}', 'UsersController@update');
 Route::get('/users/create', 'UsersController@create');
 //route is to store user data
 Route::put('/users/store', 'UsersController@store');
+//route is to delete a user
+Route::get('/users/delete/{id}','UsersController@destroy');
 
 
 //route for viewing order details

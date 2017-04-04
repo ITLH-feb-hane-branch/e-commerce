@@ -40,7 +40,7 @@
 <td>{{$find->contact_no}}</td>
 <td>{{$find->created_at}}</td>
 <td>{{$find->updated_at}}</td>
-<td><a href="users/edit/{{$find->id}}">edit</a>|<a href="delete/{{$find->id}}">delete</a></td>
+<td><a href="users/edit/{{$find->id}}">edit</a>|<a href="users/delete/{{$find->id}}">delete</a></td>
 </tr>
 @endforeach
 </table>
@@ -50,5 +50,8 @@
 @endif
 @if(Session :: has('insert'))
 	{{Session :: get('insert')}}
+@endif
+@if(Session :: has('delete'))
+	{{Session :: get('delete')}}
 @endif
 @stop

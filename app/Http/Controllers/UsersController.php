@@ -103,6 +103,13 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //$update = User::find($id);
+          //      return view('users/edit',compact('update'));
+         User::destroy($id);
+        //$delete->save();
+        //return view('users.delete',compact('update'));
+        \Session::flash('delete','Data deleted');
+                 return redirect('users');
+
     }
 }
