@@ -53,6 +53,9 @@ Route::get('/category/create', 'CategoryDetailsController@create');
 
 Route::put('/category/store', 'CategoryDetailsController@store');
 
+Route::get('/category/delete/{id}','CategoryDetailsController@destroy');
+
+
 
 //Routes for material_details
 Route::get('/material/list', 'MaterialDetailsController@index');
@@ -66,3 +69,5 @@ Route::put('/material/update/{id}', 'MaterialDetailsController@update');
 Route::get('/material/create', 'MaterialDetailsController@create');
 
 Route::put('/material/store', 'MaterialDetailsController@store');
+
+Route::get('/material/delete/{id}','MaterialDetailsController@destroy');

@@ -13,7 +13,7 @@ class CategoryDetailsController extends Controller
      */
     public function index()
     {
-        $category=CategoryDetail::all();
+        $category=CategoryDetail::all()->where('status','1');
         return view('category.list',compact('category'));
     }
 
@@ -34,7 +34,7 @@ class CategoryDetailsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         if (request('status')==='on') {
         $status=1;
         # code...
@@ -68,7 +68,7 @@ class CategoryDetailsController extends Controller
      */
     public function edit($id)
     {
-        $category=CategoryDetail::find($id);
+        $category = CategoryDetail :: find($id);
         return view('category.edit',compact('category'));
     }
 
@@ -81,21 +81,21 @@ class CategoryDetailsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category=CategoryDetail::find($id);
-        $category->name=request('name');           
-        if (request('status')==='on') {
-            $category->status=1;
+        $category = CategoryDetail :: find($id);
+        $category -> name = request('name');           
+        if (request('status') === 'on') {
+            $category -> status = 1;
             # code...
         }
         else{
-            $category->status=0;
+            $category -> status = 0;
         }
 
         //$task->TaskDetail=request('status');
-        $category->created_at=request('created_at');
-        $category->updated_at=request('modified_at');
-        $category->save();
-        \Session::flash('update','updated successfully');
+        $category -> created_at = request('created_at');
+        $category -> updated_at = request('modified_at');
+        $category -> save();
+        \Session :: flash('update','updated successfully');
         return redirect('category/list');
     }
 
@@ -107,6 +107,10 @@ class CategoryDetailsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = CategoryDetail :: find($id);
+        $category -> status = 0;
+        $category -> save();
+        \Session :: flash('delete','Deleted successfully');
+        return redirect('category/list');
     }
 }

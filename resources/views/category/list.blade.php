@@ -20,7 +20,7 @@
 		<td>{{$data->name}}</td>
 		<td><a href="edit/{{$data->id}}">Edit</a>
 			<a href="#">View</a>
-			<a href="#">Delete</a></td>
+			<a href="delete/{{$data->id}}">Delete</a></td>
 		</tr>
 		@endforeach
 
@@ -32,6 +32,9 @@
 		@endif
 		@if(Session::has('create'))
 			{{Session::get('create')}}
+		@endif
+		@if(Session::has('delete'))
+			{{Session::get('delete')}}
 		@endif
 </body>
 </html>

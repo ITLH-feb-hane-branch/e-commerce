@@ -14,7 +14,7 @@ class MaterialDetailsController extends Controller
      */
     public function index()
     {
-        $material=MaterialDetail::all();
+        $material = MaterialDetail :: all() -> where('status','1');;
         return view('material.list',compact('material'));
     }
 
@@ -109,6 +109,10 @@ class MaterialDetailsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $material = MaterialDetail :: find($id);
+        $material -> status = 0;
+        $material -> save();
+        \Session :: flash('delete','Deleted successfully');
+        return redirect('material/list');
     }
 }
