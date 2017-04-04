@@ -36,15 +36,15 @@ class MaterialDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        if (request('status')==='on') {
-        $status=1;
+        if (request('status') === 'on') {
+        $status = 1;
         # code...
         }
         else{
         $status=0;
         }
         MaterialDetail:: Create([
-            'name'=>request('name'),'status'=>$status,'created_at'=>request('created_at'),'updated_at'=>request('modified_at')
+            'name'=>request('name'),'status'=>$status,'created_at'=>request('created_at'),'created_by'=>request('created_by'),'updated_at'=>request('modified_at'),'updated_by'=>request('modified_by') 
             ]);
         \Session::flash('create','inserted successfully');
         return redirect('material/list'); 
@@ -87,7 +87,7 @@ class MaterialDetailsController extends Controller
         $material->name=request('name');           
         if (request('status')==='on') {
             $material->status=1;
-            # code...
+            
         }
         else{
             $material->status=0;

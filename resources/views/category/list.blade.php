@@ -30,6 +30,9 @@
 		@if(Session::has('update'))
 			{{Session::get('update')}}
 		@endif
+		@if(Session::has('create'))
+			{{Session::get('create')}}
+		@endif
 </body>
 </html>
 @endsection

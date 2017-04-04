@@ -43,7 +43,7 @@ class CategoryDetailsController extends Controller
         $status=0;
         }
         CategoryDetail:: Create([
-            'name'=>request('name'),'status'=>$status,'created_at'=>request('created_at'),'updated_at'=>request('modified_at')
+            'name'=>request('name'),'status'=>$status,'created_at'=>request('created_at'),'created_by'=>request('created_by'),'updated_at'=>request('modified_at'),'updated_by'=>request('modified_by')
             ]);
         \Session::flash('create','inserted successfully');
         return redirect('category/list'); 

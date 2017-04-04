@@ -6,7 +6,7 @@
 	<title>Create</title>
 </head>
 <body>
-	<form method="POST" action="/category/store">
+	<form method="POST" action="/material/store">
 		Name:<input type="text"  name="name"><br>
 		Status:<input type="checkbox" name="status"><br>
 		Created at:<input type="date" name="created_at"><br>
