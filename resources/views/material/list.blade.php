@@ -19,7 +19,7 @@
 		<td>{{$data->id}}</td>
 		<td>{{$data->name}}</td>
 		<td><a href="edit/{{$data->id}}">Edit</a>
-			<a href="#">View</a>
+			<a href="view">View</a>
 			<a href="delete/{{$data->id}}">Delete</a></td>
 		</tr>
 		@endforeach

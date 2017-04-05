@@ -19,7 +19,7 @@
 		<td>{{$data->id}}</td>
 		<td>{{$data->name}}</td>
 		<td><a href="edit/{{$data->id}}">Edit</a>
-			<a href="#">View</a>
+			<a href="list">View</a>
 			<a href="delete/{{$data->id}}">Delete</a></td>
 		</tr>
 		@endforeach
@@ -27,15 +27,15 @@
 	</table>
 	<a href="create">Create</a><br>
 
-		@if(Session::has('update'))
-			{{Session::get('update')}}
-		@endif
-		@if(Session::has('create'))
-			{{Session::get('create')}}
-		@endif
-		@if(Session::has('delete'))
-			{{Session::get('delete')}}
-		@endif
+	@if(Session::has('update'))
+		{{Session::get('update')}}
+	@endif
+	@if(Session::has('create'))
+		{{Session::get('create')}}
+	@endif
+	@if(Session::has('delete'))
+		{{Session::get('delete')}}
+	@endif
 </body>
 </html>
 @endsection

@@ -8,7 +8,7 @@
 <body>
 	<h3 class="box-title">Edit Categories:{{$category->id}}</h3>
 	<div class="box box-info">
-		<form class = "box-body form-group" role = "form" method="POST" action="/category/update/{{$category->id}}">
+		<form class = "box-body form-group" method="POST" action="/category/update/{{$category->id}}">
 			Name:<input type="text" value="{{$category->name}}" class="form-control" name="name" placeholder="Enter name"><br>
 			@if($category->status === 1)
 			Status: <input type="checkbox" checked name="status"><br>
@@ -22,7 +22,6 @@
 			{{method_field('PUT')}}
 		</form>
 	</div>
-
 </body>
 </html>
 @endsection
