@@ -36,20 +36,20 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
-
-        User::create([
-            'role_id'=> request('role_id'),
+    {     
+        $this ->validate($request,[ 'role_id'=>'required' , 'first_name'=>'required' , 'last_name'=>'required' , 'contact_no'=>'required' , 'password'=>'required' , 'status'=>'required' , 'email'=>'required' ]);   
+         User::create([
+            'role_id'   => request('role_id'),
             'first_name'=> request('first_name'),
-            'last_name'=> request('last_name'),
+            'last_name' => request('last_name'),
             'contact_no'=> request('contact_no'),
-            'status'=> request('status'),
-            'email'=> request('email'),
-            'password'=> request('password')//,
+            'status'    => request('status'),
+            'email'     => request('email'),
+            'password'  => request('password')//,
            // 'created_at'=> request('created_at'),
             //'updated_at'=> request('updated_at')
             ]);
-            \Session::flash('insert','Data Inserted');
+            \Session:: flash('insert','Data Inserted');
             return redirect('users');
     }
 
@@ -85,13 +85,15 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $update = User::find($id);
-        $update->first_name = request('first_name');
-        $update->last_name  = request('last_name');
-        $update->contact_no = request('mobile_no');
-        $update->password   = request('password');
-        $update->save();
-        \Session::flash('update','Data Updated');
+     $this ->validate($request,[ 'role_id'=>'required' , 'first_name'=>'required' , 'last_name'=>'required' , 'contact_no'=>'required' , 'password'=>'required' ]);
+        
+        $update =  User::find($id);
+        $update ->first_name = request('first_name');
+        $update ->last_name  = request('last_name');
+        $update ->contact_no = request('mobile_no');
+        $update ->password   = request('password');
+        $update ->save();
+        \Session:: flash('update','Data Updated');
         return redirect('users');
     }
 
@@ -103,12 +105,9 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //$update = User::find($id);
-          //      return view('users/edit',compact('update'));
-         User::destroy($id);
-        //$delete->save();
-        //return view('users.delete',compact('update'));
-        \Session::flash('delete','Data deleted');
+        
+            User:: destroy($id);
+        \Session:: flash('delete','Data deleted');
                  return redirect('users');
 
     }
