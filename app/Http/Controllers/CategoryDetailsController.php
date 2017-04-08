@@ -13,7 +13,7 @@ class CategoryDetailsController extends Controller
      */
     public function index()
     {
-        $category=CategoryDetail::all()->where('status','1');
+        $category = CategoryDetail :: all() -> where('status','1');
         return view('category.list',compact('category'));
     }
 
@@ -35,17 +35,20 @@ class CategoryDetailsController extends Controller
      */
     public function store(Request $request)
     {   
-        if (request('status')==='on') {
-        $status=1;
+        //Form Validation
+        $this -> validate($request,[ 'name' => 'required|max:15' , 'created_at' => 'required|date' , 'created_by' => 'required' , 'modified_at' => 'required|date' , 'modified_by' => 'required' ]); 
+        //Insert Values
+        if (request('status') === 'on') {
+        $status = 1;
         # code...
         }
         else{
-        $status=0;
+        $status = 0;
         }
-        CategoryDetail:: Create([
-            'name'=>request('name'),'status'=>$status,'created_at'=>request('created_at'),'created_by'=>request('created_by'),'updated_at'=>request('modified_at'),'updated_by'=>request('modified_by')
+        CategoryDetail :: Create([
+            'name' => request('name'),'status' => $status,'created_at' => request('created_at'),'created_by' => request('created_by'),'updated_at' => request('modified_at'),'updated_by' => request('modified_by')
             ]);
-        \Session::flash('create','inserted successfully');
+        \Session :: flash('create','inserted successfully');
         return redirect('category/list'); 
     }
 
@@ -81,6 +84,7 @@ class CategoryDetailsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this -> validate($request,[ 'name' => 'required|max:15' , 'created_at' => 'required|date' , 'modified_at' => 'required|date' ]);
         $category = CategoryDetail :: find($id);
         $category -> name = request('name');           
         if (request('status') === 'on') {

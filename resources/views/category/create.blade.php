@@ -8,17 +8,27 @@
 <body>
 	<div class="box box-info">
 		<form class = "box-body form-group" method="POST" action="/category/store">
-			Name:<input type="text" class="form-control" name="name"><br>
+			Name:<input type="text" class="form-control" name="name" ><br>
 			Status:<input type="checkbox" name="status"><br>
-			Created at:<input type="date" name="created_at"><br>
-			Created by:<input type="number" class="form-control" name="created_by"><br>
-			Modified at:<input type="date" name="modified_at"><br>
-			Modified by:<input type="number" class="form-control" name="modified_by"><br>
+			Created at:<input type="date" name="created_at" ><br>
+			Created by:<input type="number" class="form-control" name="created_by" ><br>
+			Modified at:<input type="date" name="modified_at" ><br>
+			Modified by:<input type="number" class="form-control" name="modified_by" ><br>
 			<input type="submit" value="create" name ="Create" ><br>
 			{{csrf_field()}}
 			{{method_field('PUT')}}
 		</form>
 	</div>
+	@if (count($errors) > 0)
+        <div class="alert alert-danger rtl">
+            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+            <ul class="list">
+                @foreach($errors->all() as $err)
+                    <li class="liste-item">{{ $err }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 </body>
 </html>
 @endsection
