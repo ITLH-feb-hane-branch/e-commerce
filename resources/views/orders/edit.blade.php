@@ -3,7 +3,7 @@
 @section('content_header')
 <div class="box box-info" style="padding-left:50px;">
 <form id="myform" method="POST" action="/orders/update/{{$orders->id}}">
-<h1>Edit Order:{{$orders -> id}}</h1>
+<h1>Edit Order:</h1>
   <label class="col-xs-3 control-label">Status</label>
   @if($orders -> status === 0)
   Status :
