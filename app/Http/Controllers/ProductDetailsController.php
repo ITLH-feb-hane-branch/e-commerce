@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\ProductDetail;
-use App\ModelDetail;
+
 class ProductDetailsController extends Controller
 {
     /**
@@ -14,9 +13,8 @@ class ProductDetailsController extends Controller
      */
     public function index()
     {
-        $product=ProductDetail::all();
-        $model=ModelDetail::all();        
-        return view('products.list', compact('product','model'));
+        $product=ProductDetail::all();      
+        return view('products.list', compact('product'));
 
                 
     }
@@ -28,7 +26,7 @@ class ProductDetailsController extends Controller
      */
     public function create()
     {
-        //
+        return view('products/create');
     }
 
     /**
@@ -39,7 +37,34 @@ class ProductDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Form Validation
+        $this -> validate($request,[ 'name' => 'required|max:15' , 'created_at' => 'required|date' , 'created_by' => 'required' , 'updated_at' => 'required|date' , 'updated_by' => 'required' ]);
+        //Insert Values
+        if (request('status') === 'on') {
+        $status = 1;
+        }
+        else{
+        $status = 0;
+        }
+        ProductDetail::create([
+            'category_id'=> request('category_id'),
+            'model_id'=> request('model_id'),
+            'material_id'=> request('material_id'),
+            'name'=> request('name'),
+            'image_1'=> request('image_1'),
+            'image_2'=> request('image_2'),
+            'image_3'=> request('image_3'),
+            'description'=> request('description'),
+            'price'=> request('price'),
+            'quantity'=> request('quantity'),
+            'status'=> $status,
+            'created_at' => request('created_at'),
+            'created_by' => request('created_by'),
+            'updated_at' => request('updated_at'),
+            'updated_by' => request('updated_by')
+            ]);
+        \Session :: flash('create','inserted successfully');
+        return redirect('products/list');
     }
 
     /**
@@ -62,7 +87,6 @@ class ProductDetailsController extends Controller
     public function edit($id)
     {
         $product=ProductDetail::find($id);
-        //dd($product);
         return view('products.edit', compact('product'));
     }
 
@@ -75,27 +99,26 @@ class ProductDetailsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product=ProductDetail::find($id);
-        $product->category_id=request('category_id');
-        $product->model_id=request('model_id');
-        $product->material_id=request('material_id');
-        $product->name=request('name');
-        $product->image_1=request('image_1');
-        $product->image_2=request('image_2');
-        $product->image_3=request('image_3');
-        $product->description=request('description');
-        $product->price=request('price');
-        $product->quantity=request('quantity');
+        $product = ProductDetail::find($id);
+        $product -> category_id=request('category_id');
+        $product -> model_id=request('model_id');
+        $product ->material_id=request('material_id');
+        $product -> name=request('name');
+        $product -> image_1=request('image_1');
+        $product -> image_2=request('image_2');
+        $product -> image_3=request('image_3');
+        $product -> description=request('description');
+        $product -> price=request('price');
+        $product -> quantity=request('quantity');
         if(request('status')==='on'){
             $product->status=1;
         }
         else{
             $product->status=0;
         }
-        $product->updated_at=request('created_at');
-        $product->save();
-        \Session::flash('product_success', 'edit successful');
-        // dd('hello');
+        $product -> updated_at=request('updated_at');
+        $product -> save();
+        \Session :: flash('update','updated successfully');
         return redirect('products/list');
 
     }

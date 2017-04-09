@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\ModelDetail;
 
 class ModelDetailsController extends Controller
 {
@@ -13,7 +13,8 @@ class ModelDetailsController extends Controller
      */
     public function index()
     {
-        //
+        $model=ModelDetail::all();      
+        return view('models.list', compact('model'));
     }
 
     /**
@@ -23,7 +24,7 @@ class ModelDetailsController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
@@ -34,7 +35,21 @@ class ModelDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ProductDetail::create([
+            'category_id'=> request('category_id'),
+            'model_id'=> request('model_id'),
+            'material_id'=> request('material_id'),
+            'name'=> request('name'),
+            'image_1'=> request('image_1'),
+            'image_2'=> request('image_2'),
+            'image_3'=> request('image_3'),
+            'description'=> request('description'),
+            'price'=> request('price'),
+            'quantity'=> request('quantity'),
+            'status'=> request('status')
+            ]);
+            \Session::flash('insert','Data Inserted');
+            return redirect('products');
     }
 
     /**
@@ -56,7 +71,8 @@ class ModelDetailsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $model=ModelDetail::find($id);
+        return view('models.edit', compact('model'));
     }
 
     /**
@@ -68,7 +84,18 @@ class ModelDetailsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $model=ModelDetail::find($id);
+        $model->name=request('name');
+        if(request('status')==='on'){
+            $model->status=1;
+        }
+        else{
+            $model->status=0;
+        }
+        $model->updated_at=request('updated_at');
+        $model->save();
+        \Session::flash('model_success', 'edit successful');
+        return redirect('models/list');
     }
 
     /**

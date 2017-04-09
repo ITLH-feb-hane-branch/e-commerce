@@ -45,21 +45,7 @@
 	@endforeach
 </table>
 
-<table class="table table-hover">
-<header>model</header>
-	<tr>
-		<th>id</th>
-		<th>name</th>
-		<th>action</th>
-	</tr>
-	<tr>
-	@foreach($model as $data)
-		<td>{{$data->id}}</td>
-		<td>{{$data->name}}</td>
-		<td><a href="edit/{{$data->id}}">view</a><a href="#">edit</a><a href="#">delete</a></td>
-	</tr>
-	@endforeach
-</table>
+<button><a href="create">create</a></button>
 @stop
 
 @section('css')

@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>E</b>-Commerce',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => '<b>E</b>-C',
 
     /*
     |--------------------------------------------------------------------------
@@ -109,7 +109,7 @@ return [
 
     'menu' => [
         'MAIN NAVIGATION',
-        [
+      /*  [
             'text' => 'Blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
@@ -120,7 +120,77 @@ return [
             'icon'        => 'file',
             'label'       => 4,
             'label_color' => 'success',
+        ],*/
+        //User's  related Menu
+        [
+            'text'    =>    'Users',
+            'icon'    =>    'users',
+            'submenu' => [
+                [
+                    'text' => 'User Details',
+                    'url'  => 'users',
+                    'icon' => 'user'
+                ],
+                [
+                    'text'    => 'Cart Details',
+                    'url'     => '#',
+                    'icon'    =>  'opencart',
+                ],
+                [
+                    'text'    => 'Wishlist Details',
+                    'url'     => '#',
+                    'icon'    =>  'star',
+                ],
+            ],
         ],
+
+        //Product related Menu
+        [
+            'text'    =>    'Products',
+            'icon'    =>  'cube',
+            'submenu' => [
+                [
+                    'text' => 'Product Details',
+                    'url'  => '#',
+                    'icon'    =>  'cube',
+                ],
+                [
+                    'text'    => 'Category Details',
+                    'url'     => '#',
+                    'icon'    =>  'reorder',
+                ],
+                [
+                    'text'    => 'Model Details',
+                    'url'     => '#',
+                    'icon'    =>  'tags',
+                ],
+                [
+                    'text'    => 'Material Details',
+                    'url'     => '#',
+                    'icon'    =>  'cubes',
+                ],
+            ],
+        ],
+
+        //Order related Menu
+        [
+            'text'    =>    'Orders',
+            'icon'    =>    'tasks',
+            'submenu' => [
+                [
+                    'text' => 'Order Details',
+                    'url'  => 'orders',
+                    'icon' => 'suitcase',
+                ],
+                [
+                    'text'    => 'Shipping Details',
+                    'url'     => 'shipping',
+                    'icon'    =>  'truck',
+                ],
+            ],
+        ],
+
+
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',
@@ -132,7 +202,7 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'lock',
         ],
-        [
+      /*  [
             'text'    => 'Multilevel',
             'icon'    => 'share',
             'submenu' => [
@@ -182,7 +252,7 @@ return [
         [
             'text'       => 'Information',
             'icon_color' => 'aqua',
-        ],
+        ],*/
     ],
 
     /*

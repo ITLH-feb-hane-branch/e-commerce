@@ -11,7 +11,7 @@
 @section('content')
     <p>Welcome to this beautiful admin panel.</p>
 
-    <form action="/update/{{$product->id}}" method="POST">
+    <form action="/products/update/{{$product->id}}" method="POST">
 		<div class="form-group">
                   <label>Enter new category id</label>
                   <input type="text" class="form-control" name="category_id">

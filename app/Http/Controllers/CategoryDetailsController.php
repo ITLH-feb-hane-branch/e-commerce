@@ -7,14 +7,14 @@ use App\CategoryDetail;
 class CategoryDetailsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+         * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $category=CategoryDetail::all();
-        return view('list_category',compact('category'));
+        $category = CategoryDetail :: all() -> where('status','1');
+        return view('category.list',compact('category'));
     }
 
     /**
@@ -24,7 +24,7 @@ class CategoryDetailsController extends Controller
      */
     public function create()
     {
-         return view('create_category');
+         return view('category.create');
     }
 
     /**
@@ -34,19 +34,22 @@ class CategoryDetailsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        if (request('status')==='on') {
-        $status=1;
+    {   
+        //Form Validation
+        $this -> validate($request,[ 'name' => 'required|max:15' , 'created_at' => 'required|date' , 'created_by' => 'required' , 'modified_at' => 'required|date' , 'modified_by' => 'required' ]); 
+        //Insert Values
+        if (request('status') === 'on') {
+        $status = 1;
         # code...
         }
         else{
-        $status=0;
+        $status = 0;
         }
-        CategoryDetail:: Create([
-            'name'=>request('name'),'status'=>$status,'created_at'=>request('created_at'),'updated_at'=>request('modified_at')
+        CategoryDetail :: Create([
+            'name' => request('name'),'status' => $status,'created_at' => request('created_at'),'created_by' => request('created_by'),'updated_at' => request('modified_at'),'updated_by' => request('modified_by')
             ]);
-        \Session::flash('create','inserted successfully');
-        return redirect('list_category'); 
+        \Session :: flash('create','inserted successfully');
+        return redirect('category/list'); 
     }
 
     /**
@@ -68,8 +71,8 @@ class CategoryDetailsController extends Controller
      */
     public function edit($id)
     {
-        $category=CategoryDetail::find($id);
-        return view('edit_category',compact('category'));
+        $category = CategoryDetail :: find($id);
+        return view('category.edit',compact('category'));
     }
 
     /**
@@ -81,22 +84,23 @@ class CategoryDetailsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category=CategoryDetail::find($id);
-        $category->name=request('name');           
-        if (request('status')==='on') {
-            $category->status=1;
+        $this -> validate($request,[ 'name' => 'required|max:15' , 'created_at' => 'required|date' , 'modified_at' => 'required|date' ]);
+        $category = CategoryDetail :: find($id);
+        $category -> name = request('name');           
+        if (request('status') === 'on') {
+            $category -> status = 1;
             # code...
         }
         else{
-            $category->status=0;
+            $category -> status = 0;
         }
 
         //$task->TaskDetail=request('status');
-        $category->created_at=request('created_at');
-        $category->updated_at=request('modified_at');
-        $category->save();
-        \Session::flash('update','updated successfully');
-        return redirect('list_category');
+        $category -> created_at = request('created_at');
+        $category -> updated_at = request('modified_at');
+        $category -> save();
+        \Session :: flash('update','updated successfully');
+        return redirect('category/list');
     }
 
     /**
@@ -107,6 +111,10 @@ class CategoryDetailsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = CategoryDetail :: find($id);
+        $category -> status = 0;
+        $category -> save();
+        \Session :: flash('delete','Deleted successfully');
+        return redirect('category/list');
     }
 }

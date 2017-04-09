@@ -14,8 +14,8 @@ class MaterialDetailsController extends Controller
      */
     public function index()
     {
-        $material=MaterialDetail::all();
-        return view('list_material',compact('material'));
+        $material = MaterialDetail :: all() -> where('status','1');;
+        return view('material.list',compact('material'));
     }
 
     /**
@@ -25,7 +25,7 @@ class MaterialDetailsController extends Controller
      */
     public function create()
     {
-        return view('create_material');
+        return view('material/create');
     }
 
     /**
@@ -35,19 +35,21 @@ class MaterialDetailsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        if (request('status')==='on') {
-        $status=1;
-        # code...
+    {   
+        //Form Validation
+        $this -> validate($request,[ 'name' => 'required|max:15' , 'created_at' => 'required|date' , 'created_by' => 'required' , 'modified_at' => 'required|date' , 'modified_by' => 'required' ]);
+        //Insert Values
+        if (request('status') === 'on') {
+        $status = 1;
         }
         else{
-        $status=0;
+        $status = 0;
         }
-        MaterialDetail:: Create([
-            'name'=>request('name'),'status'=>$status,'created_at'=>request('created_at'),'updated_at'=>request('modified_at')
+        MaterialDetail :: Create([
+            'name' => request('name'),'status' => $status,'created_at' => request('created_at'),'created_by' => request('created_by'),'updated_at' => request('modified_at'),'updated_by' => request('modified_by') 
             ]);
-        \Session::flash('create','inserted successfully');
-        return redirect('list_material'); 
+        \Session :: flash('create','inserted successfully');
+        return redirect('material/list'); 
     }
 
     /**
@@ -69,8 +71,8 @@ class MaterialDetailsController extends Controller
      */
     public function edit($id)
     {
-        $material=MaterialDetail::find($id);
-        return view('edit_material',compact('material'));
+        $material = MaterialDetail :: find($id);
+        return view('material.edit',compact('material'));
 
     }
 
@@ -82,23 +84,24 @@ class MaterialDetailsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        $material=MaterialDetail::find($id);
-        $material->name=request('name');           
-        if (request('status')==='on') {
-            $material->status=1;
-            # code...
+    {   
+        $this -> validate($request,[ 'name' => 'required|max:15' , 'created_at' => 'required|date' , 'modified_at' => 'required|date' ]);
+        $material = MaterialDetail :: find($id);
+        $material -> name = request('name');           
+        if (request('status') === 'on') {
+            $material -> status = 1;
+            
         }
         else{
-            $material->status=0;
+            $material -> status = 0;
         }
 
         //$task->TaskDetail=request('status');
-        $material->created_at=request('created_at');
-        $material->updated_at=request('modified_at');
-        $material->save();
-        \Session::flash('update','updated successfully');
-        return redirect('list_material');
+        $material -> created_at = request('created_at');
+        $material -> updated_at = request('modified_at');
+        $material -> save();
+        \Session :: flash('update','updated successfully');
+        return redirect('material/list');
     }
 
     /**
@@ -109,6 +112,10 @@ class MaterialDetailsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $material = MaterialDetail :: find($id);
+        $material -> status = 0;
+        $material -> save();
+        \Session :: flash('delete','Deleted successfully');
+        return redirect('material/list');
     }
 }
