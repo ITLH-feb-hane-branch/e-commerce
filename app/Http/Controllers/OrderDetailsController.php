@@ -29,6 +29,6 @@ class OrderDetailsController extends Controller
     $orders -> save();
     //creating flash message
     \Session :: flash( 'update' , 'Data Updated' );
-    return redirect( 'orders' );
+    return redirect( 'admin/orders' );
   }
 }
