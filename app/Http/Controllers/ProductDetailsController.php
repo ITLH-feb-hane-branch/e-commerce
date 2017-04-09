@@ -13,7 +13,7 @@ class ProductDetailsController extends Controller
      */
     public function index()
     {
-        $product=ProductDetail::all() ->where('status','1');
+        $product=ProductDetail::all() -> where('status','1');
         return view('products.list', compact('product'));
 
                 
@@ -40,16 +40,14 @@ class ProductDetailsController extends Controller
         // //Form Validation
         $this -> validate($request,[ 
         'name' => 'required|max:15'
-        ]);
-        //dd($a);
+        ]);}
         //Insert Values
         if (request('status') === 'on') {
         $status = 1;
         }
         else{
         $status = 0;
-        }
-        //dd('hi');	 
+        }	 
         ProductDetail::create([
             'category_id'=> request('category_id'),
             'model_id'=> request('model_id'),
@@ -104,7 +102,7 @@ class ProductDetailsController extends Controller
         $product = ProductDetail::find($id);
         $product -> category_id=request('category_id');
         $product -> model_id=request('model_id');
-        $product ->material_id=request('material_id');
+        $product -> material_id=request('material_id');
         $product -> name=request('name');
         $product -> image_1=request('image_1');
         $product -> image_2=request('image_2');
@@ -120,7 +118,6 @@ class ProductDetailsController extends Controller
         else{
             $product->status=0;
         }
-        $product -> updated_at=request('updated_at');
         $product -> save();
         \Session :: flash('update','updated successfully');
         return redirect('products/list');

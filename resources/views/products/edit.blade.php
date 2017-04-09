@@ -5,11 +5,10 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>Edit Product</h1>
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
 
     <form action="/products/update/{{$product->id}}" method="POST">
 		<div class="form-group">
@@ -68,7 +67,9 @@
         <input type="checkbox" value="update" name="update">status</input>
         @endif
 
-        @if (count($errors) > 0)
+        <input type="submit" value="insert" name="update"></input>
+
+@if (count($errors) > 0)
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -78,7 +79,8 @@
     </div>
 @endif
 
-        <input type="submit" value="insert" name="update"></input>
+</div>
+</form>
 
         {{csrf_field()}}
         {{method_field('PUT')}}
