@@ -97,3 +97,18 @@ Route::get('/models/create', 'ModelDetailsController@create');
 Route::put('/models/store', 'ModelDetailsController@store');
 
 Route::get('/models/delete/{id}','ModelDetailsController@destroy');
+
+
+//Routes for wishlist_details
+Route::get('/wishlist/list', 'WishlistsController@index');
+
+Route::get('/wishlist/delete/{id}', 'WishlistsController@delete');
+
+//Routes for cart_details
+Route::get('/cart/list', 'CartsController@index');
+
+Route::get('/cart/edit/{id}', 'CartsController@edit');
+
+Route::get('/cart/delete/{id}', 'CartsController@delete');
+
+Route::put('/cart/update/{id}', 'CartsController@update');
