@@ -12,11 +12,22 @@
 <form action="/products/store" method="POST">
 <div class="container">
   <div class="form-group">
-    <label>Category Id</label>
+    <label>Model</label>
   <div class="form-group">
     <label>Name</label>
-    <input type="" class="form-control" name="name">
+    <input type="text" class="form-control" name="name">
   </div>
+
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
    <input type="Submit" name="Submit">
 </div>
   {{csrf_field()}}

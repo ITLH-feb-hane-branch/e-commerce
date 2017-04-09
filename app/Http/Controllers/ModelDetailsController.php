@@ -13,7 +13,7 @@ class ModelDetailsController extends Controller
      */
     public function index()
     {
-        $model=ModelDetail::all();      
+        $model=ModelDetail::all() -> where('status','1');      
         return view('models.list', compact('model'));
     }
 
@@ -24,7 +24,7 @@ class ModelDetailsController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('models/create');
     }
 
     /**
@@ -35,21 +35,24 @@ class ModelDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        ProductDetail::create([
-            'category_id'=> request('category_id'),
-            'model_id'=> request('model_id'),
-            'material_id'=> request('material_id'),
+        
+        if (request('status') === 'on') {
+        $status = 1;
+        }
+        else{
+        $status = 0;
+        }
+        //dd('hi');  
+        ModelDetail::create([
             'name'=> request('name'),
-            'image_1'=> request('image_1'),
-            'image_2'=> request('image_2'),
-            'image_3'=> request('image_3'),
-            'description'=> request('description'),
-            'price'=> request('price'),
-            'quantity'=> request('quantity'),
-            'status'=> request('status')
+            'status'=> 1,
+            'created_at',
+            'created_by' => 1,
+            'updated_at',
+            'updated_by' => 1
             ]);
-            \Session::flash('insert','Data Inserted');
-            return redirect('products');
+        \Session :: flash('create','inserted successfully');
+        return redirect('models/list');
     }
 
     /**
@@ -92,9 +95,9 @@ class ModelDetailsController extends Controller
         else{
             $model->status=0;
         }
-        $model->updated_at=request('updated_at');
-        $model->save();
-        \Session::flash('model_success', 'edit successful');
+        $model -> updated_at=request('updated_at');
+        $model -> save();
+        \Session :: flash('model_success', 'edit successful');
         return redirect('models/list');
     }
 
@@ -106,6 +109,10 @@ class ModelDetailsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $model = ModelDetail :: find($id);
+        $model -> status = 0;
+        $model -> save();
+        \Session :: flash('delete','Deleted successfully');
+        return redirect('models/list');
     }
 }

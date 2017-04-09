@@ -16,13 +16,11 @@
                   <label >Enter new model name</label>
                   <input type="text" class="form-control" name="name">
         </div>
-
-        <input type="checkbox">status</input>
-
-        <div class="form-group">
-                  <label >updated at</label>
-                  <input type="text" class="form-control" name="updated_at">
-        </div>
+        @if($model -> status === 1)
+        <input type="checkbox" checked name="status">status</input>
+        @else
+        <input type="checkbox" value="update" name="update">status</input>
+        @endif
 
         <input type="submit" value="insert" name="update"></input>
 
@@ -36,5 +34,4 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
 @stop

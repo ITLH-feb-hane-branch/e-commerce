@@ -61,30 +61,17 @@
     <input type="text" class="form-control" name="quantity">
   </div>
 
-    <label>Status</label>
-    <input type="checkbox" name="status">
-    
-  <div class="form-group">
-    <label>Created at</label>
-    <input type="date" name="created_at">
-  </div>
-
-  <div class="form-group">
-    <label>Created by</label>
-    <input type="date" name="created_by">
-  </div>
-
-  <div class="form-group">
-    <label>Modified at</label>
-    <input type="text" name="modified_at">
-  </div>
-
-  <div class="form-group">
-    <label>Modified_by</label>
-    <input type="text" name="modified_by">
-  </div>
-
       <input type="submit" value="create" name ="create" ><br>
+
+      @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
   </div>
   {{csrf_field()}}
@@ -97,5 +84,6 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script> </script>
 @stop
+</form>

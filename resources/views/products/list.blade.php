@@ -40,7 +40,7 @@
 		<td>{{$data->description}}</td>
 		<td>{{$data->price}}</td>
 		<td>{{$data->quantity}}</td>
-		<td><a href="edit/{{$data->id}}">edit</a><a href="#">view</a><a href="#">delete</a></td>
+		<td><a href="edit/{{$data->id}}">edit</a><a href="#">view</a><a href="delete/{{$data->id}}">delete</a></td>
 	</tr>
 	@endforeach
 </table>

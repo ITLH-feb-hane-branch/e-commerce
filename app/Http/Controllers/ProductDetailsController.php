@@ -13,7 +13,7 @@ class ProductDetailsController extends Controller
      */
     public function index()
     {
-        $product=ProductDetail::all();      
+        $product=ProductDetail::all() ->where('status','1');
         return view('products.list', compact('product'));
 
                 
@@ -37,8 +37,11 @@ class ProductDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        //Form Validation
-        $this -> validate($request,[ 'name' => 'required|max:15' , 'created_at' => 'required|date' , 'created_by' => 'required' , 'updated_at' => 'required|date' , 'updated_by' => 'required' ]);
+        // //Form Validation
+        $this -> validate($request,[ 
+        'name' => 'required|max:15'
+        ]);
+        //dd($a);
         //Insert Values
         if (request('status') === 'on') {
         $status = 1;
@@ -46,6 +49,7 @@ class ProductDetailsController extends Controller
         else{
         $status = 0;
         }
+        //dd('hi');	 
         ProductDetail::create([
             'category_id'=> request('category_id'),
             'model_id'=> request('model_id'),
@@ -57,11 +61,9 @@ class ProductDetailsController extends Controller
             'description'=> request('description'),
             'price'=> request('price'),
             'quantity'=> request('quantity'),
-            'status'=> $status,
-            'created_at' => request('created_at'),
-            'created_by' => request('created_by'),
-            'updated_at' => request('updated_at'),
-            'updated_by' => request('updated_by')
+            'status'=> 1,
+            'created_by' => 1,
+            'updated_by' => 1
             ]);
         \Session :: flash('create','inserted successfully');
         return redirect('products/list');
@@ -110,6 +112,8 @@ class ProductDetailsController extends Controller
         $product -> description=request('description');
         $product -> price=request('price');
         $product -> quantity=request('quantity');
+        $product -> created_by=1;
+        $product -> updated_by=1;
         if(request('status')==='on'){
             $product->status=1;
         }

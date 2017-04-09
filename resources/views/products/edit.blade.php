@@ -62,12 +62,21 @@
                   <input type="text" class="form-control" name="quantity">
         </div>
 
-        <input type="checkbox">status</input>
+        @if($product -> status === 1)
+        <input type="checkbox" checked name="status">status</input>
+        @else
+        <input type="checkbox" value="update" name="update">status</input>
+        @endif
 
-        <div class="form-group">
-                  <label >updated at</label>
-                  <input type="text" class="form-control" name="updated_at">
-        </div>
+        @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
         <input type="submit" value="insert" name="update"></input>
 
