@@ -9,7 +9,7 @@ class OrderDetail extends Model
     //declaring fillable coloumn names
     protected $fillable = ['action_date' , 'status' ,];
 
-    public function shupping(){
+    public function shipping(){
       return $this -> belongsTo(ShippingDetail::class);
     }
 
