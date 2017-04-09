@@ -21,7 +21,6 @@ class OrderDetailsController extends Controller
 
   public function update( $id , Request $request ){
     //validating the input fields
-    $this -> validate($request,[ 'status'=>'required' , 'actiondate'=>'required']);
     $orders = OrderDetail :: find( $id );
     $orders -> action_date = request( 'actiondate' );
     $orders -> status = request( 'status','value' );
