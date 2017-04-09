@@ -90,7 +90,7 @@ class CategoryDetailsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //$this -> validate($request,[ 'name' => 'required|max:15' ]);
+        $this -> validate($request,[ 'name' => 'required|max:15' ]);
         $category = CategoryDetail :: find($id);
         $category -> name = request('name');           
         if (request('status') === 'on') {

@@ -91,7 +91,7 @@ class MaterialDetailsController extends Controller
      */
     public function update(Request $request, $id)
     {   
-        //$this -> validate($request,[ 'name' => 'required|max:15' ]);
+        $this -> validate($request,[ 'name' => 'required|max:15' ]);
         $material = MaterialDetail :: find($id);
         $material -> name = request('name');           
         if (request('status') === 'on') {
