@@ -6,7 +6,7 @@
 	<title>EDIT CATEGORIES</title>
 </head>
 <body>
-	<h3 class="box-title">Edit Categories:{{$category -> id}}</h3>
+	<h3 class="box-title">Edit Categories:</h3>
 	<div class="box box-info">
 		<form class = "box-body form-group" method="POST" action="/category/update/{{$category->id}}">
 			Name:<input type="text" value="{{$category->name}}" class="form-control" name="name" placeholder="Enter name"><br>

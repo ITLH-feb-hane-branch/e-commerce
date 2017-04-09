@@ -6,7 +6,7 @@
 	<title>EDIT MATERIAL</title>
 </head>
 <body>
-	<h3 class="box-title">Edit Materials:{{$material->id}}</h3>
+	<h3 class="box-title">Edit Materials:</h3>
 	<div class="box box-info">
 		<form class = "box-body form-group" method="POST" action="/material/update/{{$material->id}}">
 			Name:<input type="text" value="{{$material->name}}" class="form-control" name="name"><br>

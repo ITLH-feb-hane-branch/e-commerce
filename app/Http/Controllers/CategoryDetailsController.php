@@ -78,7 +78,8 @@ class CategoryDetailsController extends Controller
     public function edit($id)
     {
         $category = CategoryDetail :: find($id);
-        return view('category.edit',compact('category'));
+        $encrypt = \Crypt::encrypt($category);
+        return view('category.edit',compact('category','encrypt'));
     }
 
     /**
