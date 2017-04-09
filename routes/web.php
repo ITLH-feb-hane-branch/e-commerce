@@ -12,25 +12,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
 //route for viewing users data
-Route::get('/admin/users', 'UsersController@index');
+Route::get('/users', 'HomeController@index');
 // route for editing users data
-Route::get('/admin/users/edit/{id}', 'UsersController@edit');
+Route::get('/users/edit/{id}', 'UsersController@edit');
 //route for updating users data
-Route::put('/admin/users/update/{id}', 'UsersController@update');
+Route::put('/users/update/{id}', 'UsersController@update');
 //route for creating users
-Route::get('/admin/users/create', 'UsersController@create');
+Route::get('/users/create', 'UsersController@create');
 //route is to store user data
-Route::put('/admin/users/store', 'UsersController@store');
+Route::put('/users/store', 'UsersController@store');
 //route is to delete a user
-Route::get('/admin/users/delete/{id}', 'UsersController@destroy');
+Route::get('/users/delete/{id}', 'UsersController@destroy');
 
 
 //route for viewing order details
