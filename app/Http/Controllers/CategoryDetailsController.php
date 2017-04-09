@@ -36,18 +36,24 @@ class CategoryDetailsController extends Controller
     public function store(Request $request)
     {   
         //Form Validation
-        $this -> validate($request,[ 'name' => 'required|max:15' , 'created_at' => 'required|date' , 'created_by' => 'required' , 'modified_at' => 'required|date' , 'modified_by' => 'required' ]); 
+        $this -> validate($request,[ 'name' => 'required|max:15' ]); 
         //Insert Values
         if (request('status') === 'on') {
-        $status = 1;
-        # code...
+            $status = 1;
+            # code...
         }
         else{
-        $status = 0;
+            $status = 0;
         }
+        //$a = user :: find($id);
         CategoryDetail :: Create([
-            'name' => request('name'),'status' => $status,'created_at' => request('created_at'),'created_by' => request('created_by'),'updated_at' => request('modified_at'),'updated_by' => request('modified_by')
-            ]);
+            'name' => request('name'),
+            'status' => $status,
+            'created_at',
+            'created_by' => '1',
+            'updated_at',
+            'updated_by' => '1'
+        ]);
         \Session :: flash('create','inserted successfully');
         return redirect('category/list'); 
     }
@@ -84,7 +90,7 @@ class CategoryDetailsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this -> validate($request,[ 'name' => 'required|max:15' , 'created_at' => 'required|date' , 'modified_at' => 'required|date' ]);
+        //$this -> validate($request,[ 'name' => 'required|max:15' ]);
         $category = CategoryDetail :: find($id);
         $category -> name = request('name');           
         if (request('status') === 'on') {
@@ -96,8 +102,7 @@ class CategoryDetailsController extends Controller
         }
 
         //$task->TaskDetail=request('status');
-        $category -> created_at = request('created_at');
-        $category -> updated_at = request('modified_at');
+        $category -> updated_by = '5';
         $category -> save();
         \Session :: flash('update','updated successfully');
         return redirect('category/list');

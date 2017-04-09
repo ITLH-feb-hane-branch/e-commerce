@@ -151,7 +151,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Product Details',
-                    'url'  => '',
+                    'url'  => 'products/list',
                     'icon'    =>  'cube',
                 ],
                 [

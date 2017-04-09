@@ -37,18 +37,23 @@ class MaterialDetailsController extends Controller
     public function store(Request $request)
     {   
         //Form Validation
-        $this -> validate($request,[ 'name' => 'required|max:15' , 'created_at' => 'required|date' , 'created_by' => 'required' , 'modified_at' => 'required|date' , 'modified_by' => 'required' ]);
+        $this -> validate($request, [ 'name' => 'required|max:15' ]);
         //Insert Values
         if (request('status') === 'on') {
-        $status = 1;
-        # code...
+            $status = 1;
+            # code...
         }
         else{
-        $status = 0;
+            $status = 0;
         }
         MaterialDetail :: Create([
-            'name' => request('name'),'status' => $status,'created_at' => request('created_at'),'created_by' => request('created_by'),'updated_at' => request('modified_at'),'updated_by' => request('modified_by') 
-            ]);
+            'name' => request('name'),
+            'status' => $status,
+            'created_at',
+            'created_by' => '1',
+            'updated_at',
+            'updated_by' => '1' 
+        ]);
         \Session :: flash('create','inserted successfully');
         return redirect('material/list'); 
     }
@@ -86,7 +91,7 @@ class MaterialDetailsController extends Controller
      */
     public function update(Request $request, $id)
     {   
-        $this -> validate($request,[ 'name' => 'required|max:15' , 'created_at' => 'required|date' , 'modified_at' => 'required|date' ]);
+        //$this -> validate($request,[ 'name' => 'required|max:15' ]);
         $material = MaterialDetail :: find($id);
         $material -> name = request('name');           
         if (request('status') === 'on') {
@@ -98,8 +103,7 @@ class MaterialDetailsController extends Controller
         }
 
         //$task->TaskDetail=request('status');
-        $material -> created_at = request('created_at');
-        $material -> updated_at = request('modified_at');
+        $material -> updated_by = '5';
         $material -> save();
         \Session :: flash('update','updated successfully');
         return redirect('material/list');
