@@ -15,8 +15,6 @@
 			@else
 			Status:<input type="checkbox" name="status"><br>
 			@endif
-			Created at:<input type="date" value="{{$category->created_at}}" name="created_at"><br>
-			Modified at:<input type="date" value="{{$category->updated_at}}" name="modified_at"><br>
 			<input type="submit" value="update" name="update" ><br>
 			{{csrf_field()}}
 			{{method_field('PUT')}}

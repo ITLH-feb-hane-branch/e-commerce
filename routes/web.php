@@ -29,17 +29,17 @@ Route::get('/users/create', 'UsersController@create');
 //route is to store user data
 Route::put('/users/store', 'UsersController@store');
 //route is to delete a user
-Route::get('/users/delete/{id}','UsersController@destroy');
+Route::get('/users/delete/{id}', 'UsersController@destroy');
 
 
 //route for viewing order details
-Route::get('/orders','OrderDetailsController@index');
+Route::get('/orders', 'OrderDetailsController@index');
 //route for viewing shipping details
-Route::get('/shipping','ShippingDetailsController@index');
+Route::get('/shipping', 'ShippingDetailsController@index');
 //route for editing orders
-Route::get('/orders/edit/{id}','OrderDetailsController@edit');
+Route::get('/orders/edit/{id}', 'OrderDetailsController@edit');
 //route for updating orders
-Route::put('/orders/update/{id}','OrderDetailsController@update');
+Route::put('/orders/update/{id}', 'OrderDetailsController@update');
 
 
 //Routes for category_details
@@ -72,6 +72,7 @@ Route::put('/material/store', 'MaterialDetailsController@store');
 
 Route::get('/material/delete/{id}','MaterialDetailsController@destroy');
 
+<<<<<<< HEAD
 
 //Routes for wishlist_details
 Route::get('/wishlist/list', 'WishlistsController@index');
@@ -87,3 +88,17 @@ Route::get('/cart/edit/{id}', 'CartsController@edit');
 Route::get('/cart/delete/{id}', 'CartsController@delete');
 
 Route::put('/cart/update/{id}', 'CartsController@update');
+=======
+//routes for product_details
+Route::get('/products/list', 'ProductDetailsController@index');
+
+Route::get('/products/edit/{id}', 'ProductDetailsController@edit');
+
+Route::put('/products/update/{id}', 'ProductDetailsController@update');
+
+Route::get('/products/create', 'ProductDetailsController@create');
+
+Route::put('/products/store', 'ProductDetailsController@store');
+
+Route::get('/products/delete/{id}','ProductDetailsController@destroy');
+>>>>>>> 845aec6b224f4d7a344b65cae17d507416c53ea7
