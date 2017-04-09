@@ -41,6 +41,7 @@ class MaterialDetailsController extends Controller
         //Insert Values
         if (request('status') === 'on') {
         $status = 1;
+        # code...
         }
         else{
         $status = 0;

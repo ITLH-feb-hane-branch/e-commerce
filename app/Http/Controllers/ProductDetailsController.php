@@ -131,6 +131,10 @@ class ProductDetailsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = ProductDetail :: find($id);
+        $product -> status = 0;
+        $product -> save();
+        \Session :: flash('delete','Deleted successfully');
+        return redirect('products/list');
     }
 }

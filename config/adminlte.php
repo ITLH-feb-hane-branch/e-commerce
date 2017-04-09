@@ -151,12 +151,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Product Details',
-                    'url'  => '#',
+                    'url'  => '',
                     'icon'    =>  'cube',
                 ],
                 [
                     'text'    => 'Category Details',
-                    'url'     => '#',
+                    'url'     => 'category/list',
                     'icon'    =>  'reorder',
                 ],
                 [
@@ -166,7 +166,7 @@ return [
                 ],
                 [
                     'text'    => 'Material Details',
-                    'url'     => '#',
+                    'url'     => 'material/list',
                     'icon'    =>  'cubes',
                 ],
             ],
