@@ -1,4 +1,4 @@
-@extends('adminlte :: page')
+@extends('adminlte::page')
 @section('title', 'AdminLTE')
 @section('content_header')
 <div class="box box-info" style="padding-left:50px;">
