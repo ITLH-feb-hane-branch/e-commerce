@@ -72,18 +72,28 @@ Route::put('/material/store', 'MaterialDetailsController@store');
 
 Route::get('/material/delete/{id}','MaterialDetailsController@destroy');
 
+//routes for product_details
+Route::get('/products/list', 'ProductDetailsController@index');
 
-//Routes for wishlist_details
-Route::get('/wishlist/list', 'WishlistsController@index');
+Route::get('/products/edit/{id}', 'ProductDetailsController@edit');
 
-Route::get('/wishlist/delete/{id}', 'WishlistsController@delete');
+Route::put('/products/update/{id}', 'ProductDetailsController@update');
 
+Route::get('/products/create', 'ProductDetailsController@create');
 
-//Routes for cart_details
-Route::get('/cart/list', 'CartsController@index');
+Route::put('/products/store', 'ProductDetailsController@store');
 
-Route::get('/cart/edit/{id}', 'CartsController@edit');
+Route::get('/products/delete/{id}','ProductDetailsController@destroy');
 
-Route::get('/cart/delete/{id}', 'CartsController@delete');
+//routes for product_details
+Route::get('/models/list', 'ModelDetailsController@index');
 
-Route::put('/cart/update/{id}', 'CartsController@update');
+Route::get('/models/edit/{id}', 'ModelDetailsController@edit');
+
+Route::put('/models/update/{id}', 'ModelDetailsController@update');
+
+Route::get('/models/create', 'ModelDetailsController@create');
+
+Route::put('/models/store', 'ModelDetailsController@store');
+
+Route::get('/models/delete/{id}','ModelDetailsController@destroy');
