@@ -24,8 +24,8 @@
         <div class="alert alert-danger rtl">
             <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
             <ul class="list">
-                @foreach($errors->all() as $err)
-                    <li class="liste-item">{{ $err }}</li>
+                @foreach($errors -> all() as $err)
+                    <li class = "liste-item">{{ $err }}</li>
                 @endforeach
             </ul>
         </div>
