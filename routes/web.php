@@ -29,17 +29,17 @@ Route::get('/users/create', 'UsersController@create');
 //route is to store user data
 Route::put('/users/store', 'UsersController@store');
 //route is to delete a user
-Route::get('/users/delete/{id}','UsersController@destroy');
+Route::get('/users/delete/{id}', 'UsersController@destroy');
 
 
 //route for viewing order details
-Route::get('/orders','OrderDetailsController@index');
+Route::get('/orders', 'OrderDetailsController@index');
 //route for viewing shipping details
-Route::get('/shipping','ShippingDetailsController@index');
+Route::get('/shipping', 'ShippingDetailsController@index');
 //route for editing orders
-Route::get('/orders/edit/{id}','OrderDetailsController@edit');
+Route::get('/orders/edit/{id}', 'OrderDetailsController@edit');
 //route for updating orders
-Route::put('/orders/update/{id}','OrderDetailsController@update');
+Route::put('/orders/update/{id}', 'OrderDetailsController@update');
 
 
 //Routes for category_details
