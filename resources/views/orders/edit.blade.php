@@ -31,7 +31,7 @@
   <input class="btn btn-default col-m-4" type="submit" value="Update">
   {{csrf_field()}}
   {{method_field('PUT')}}
-  hi
+  
 </form>
 <br>
 </div>
