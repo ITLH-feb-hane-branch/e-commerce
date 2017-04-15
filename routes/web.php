@@ -17,17 +17,17 @@ Route::get('/', 'HomeController@index');
 Auth::routes();
 
 //route for viewing users data
-Route::get('/users', 'HomeController@index');
+Route::get('/admin/users', 'HomeController@index');
 // route for editing users data
-Route::get('/users/edit/{id}', 'UsersController@edit');
+Route::get('/admin/users/edit/{id}', 'UsersController@edit');
 //route for updating users data
-Route::put('/users/update/{id}', 'UsersController@update');
+Route::put('/admin/users/update/{id}', 'UsersController@update');
 //route for creating users
-Route::get('/users/create', 'UsersController@create');
+Route::get('/admin/users/create', 'UsersController@create');
 //route is to store user data
-Route::put('/users/store', 'UsersController@store');
+Route::put('/admin/users/store', 'UsersController@store');
 //route is to delete a user
-Route::get('/users/delete/{id}', 'UsersController@destroy');
+Route::get('/admin/users/delete/{id}', 'UsersController@destroy');
 
 
 //route for viewing order details

@@ -40,11 +40,11 @@
 <td>{{$find->contact_no}}</td>
 <td>{{$find->created_at}}</td>
 <td>{{$find->updated_at}}</td>
-<td><a href="users/edit/{{$find->id}}">edit</a>|<a href="users/delete/{{$find->id}}">delete</a></td>
+<td><a href="/admin/users/edit/{{$find->id}}">edit</a>|<a href="/admin/users/delete/{{$find->id}}">delete</a></td>
 </tr>
 @endforeach
 </table>
-<a href="users/create">Create New User</a><br>
+<a href="/admin/users/create">Create New User</a><br>
 @if(Session :: has('update'))
 	{{Session :: get('update')}}
 @endif
