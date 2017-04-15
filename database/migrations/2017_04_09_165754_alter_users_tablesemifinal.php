@@ -14,8 +14,8 @@ class AlterUsersTablesemifinal extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('role_id')->after('id')->default('1');
-            $table->boolean('status')->after('contact_no')->default('1');
+            $table->boolean('role_id')->default('1')->change();
+            $table->boolean('status')->default('1')->change();
         });
     }
 
@@ -28,8 +28,8 @@ class AlterUsersTablesemifinal extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             
-        $table->dropColumn('role_id');
-        $table->dropColumn('status');
+        $table->boolean('role_id')->change();
+        $table->boolean('status')->change();
         });
     }
 }
