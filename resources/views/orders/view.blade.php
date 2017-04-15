@@ -39,7 +39,7 @@
       <td>{{$order -> created_by}}</td>
       <td>{{$order -> updated_at}}</td>
       <td>{{$order -> updated_by}}</td>
-      <td><a href="orders/edit/{{$order->id}}">Edit Order</a></td>
+      <td><a href="/admin/orders/edit/{{$order->id}}">Edit Order</a></td>
     </tr>
   @endforeach
 </table>
