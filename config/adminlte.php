@@ -128,7 +128,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'User Details',
-                    'url'  => 'users',
+                    'url'  => 'admin/users',
                     'icon' => 'user'
                 ],
                 [
@@ -151,12 +151,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Product Details',
-                    'url'  => 'products/list',
+                    'url'  => 'admin/products/list',
                     'icon'    =>  'cube',
                 ],
                 [
                     'text'    => 'Category Details',
-                    'url'     => 'category/list',
+                    'url'     => 'admin/category/list',
                     'icon'    =>  'reorder',
                 ],
                 [
@@ -166,7 +166,7 @@ return [
                 ],
                 [
                     'text'    => 'Material Details',
-                    'url'     => 'material/list',
+                    'url'     => 'admin/material/list',
                     'icon'    =>  'cubes',
                 ],
             ],
@@ -179,12 +179,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Order Details',
-                    'url'  => 'orders',
+                    'url'  => 'admin/orders',
                     'icon' => 'suitcase',
                 ],
                 [
                     'text'    => 'Shipping Details',
-                    'url'     => 'shipping',
+                    'url'     => 'admin/shipping',
                     'icon'    =>  'truck',
                 ],
             ],

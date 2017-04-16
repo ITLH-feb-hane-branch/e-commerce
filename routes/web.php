@@ -1,112 +1,83 @@
-
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
-//route for viewing users data
-Route::get('/admin/users', 'HomeController@index');
-// route for editing users data
-Route::get('/admin/users/edit/{id}', 'UsersController@edit');
-//route for updating users data
-Route::put('/admin/users/update/{id}', 'UsersController@update');
-//route for creating users
-Route::get('/admin/users/create', 'UsersController@create');
-//route is to store user data
-Route::put('/admin/users/store', 'UsersController@store');
-//route is to delete a user
-Route::get('/admin/users/delete/{id}', 'UsersController@destroy');
+// Admin Routes Grouping added
+Route::group(array('prefix' => 'admin'), function() {
+    Route::get('/', 'HomeController@index');
 
+    // Users Route Grouping 
+    Route::group(array('prefix' => 'users'), function() {
+        Route::get('/', 'HomeController@index');
+        Route::get('edit/{id}', 'UsersController@edit');
+        Route::put('update/{id}', 'UsersController@update');
+        Route::get('create', 'UsersController@create');
+        Route::put('store', 'UsersController@store');
+        Route::get('delete/{id}', 'UsersController@destroy');
+    });
 
-//route for viewing order details
-Route::get('/admin/orders', 'OrderDetailsController@index');
-//route for viewing shipping details
-Route::get('/admin/shipping', 'ShippingDetailsController@index');
-//route for editing orders
-Route::get('/admin/orders/edit/{id}', 'OrderDetailsController@edit');
-//route for updating orders
-Route::put('/admin/orders/update/{id}', 'OrderDetailsController@update');
+    // Orders Route Grouping
+    Route::group(array('prefix' => 'orders'), function() {
+        Route::get('/', 'OrderDetailsController@index');
+        Route::get('edit/{id}', 'OrderDetailsController@edit');
+        Route::get('update/{id}', 'OrderDetailsController@update');
+    });
 
+    // Categories Route Grouping
+    Route::group(array('prefix' => 'category'), function() {
+        Route::get('list', 'CategoryDetailsController@index');
+        Route::get('edit/{id}', 'CategoryDetailsController@edit');
+        Route::put('update/{id}', 'CategoryDetailsController@update');
+        Route::get('create', 'CategoryDetailsController@create');
+        Route::put('store', 'CategoryDetailsController@store');
+        Route::get('delete/{id}', 'CategoryDetailsController@destroy');
+    });
 
-//Routes for category_details
-Route::get('/admin/category/list', 'CategoryDetailsController@index');
+    //route for viewing shipping details
+    Route::get('shipping', 'ShippingDetailsController@index');
 
-Route::get('/admin/category/edit/{id}', 'CategoryDetailsController@edit');
+    // Material Route Grouping
+    Route::group(array('prefix' => 'material'), function() {
+        Route::get('list', 'MaterialDetailsController@index');
+        Route::get('edit/{id}', 'MaterialDetailsController@edit');
+        Route::put('update/{id}', 'MaterialDetailsController@update');
+        Route::put('update/{id}', 'MaterialDetailsController@update');
+        Route::get('create', 'MaterialDetailsController@create');
+        Route::put('store', 'MaterialDetailsController@store');
+        Route::get('delete/{id}', 'MaterialDetailsController@destroy');
+    });
 
-Route::put('/admin/category/update/{id}', 'CategoryDetailsController@update');
+    // Products Route Grouping
+    Route::group(array('prefix' => 'products'), function() {
+        Route::get('list', 'ProductDetailsController@index');
+        Route::get('edit/{id}', 'ProductDetailsController@edit');
+        Route::put('update/{id}', 'ProductDetailsController@update');
+        Route::get('create', 'ProductDetailsController@create');
+        Route::put('store', 'ProductDetailsController@store');
+        Route::get('delete/{id}', 'ProductDetailsController@destroy');
+    });
 
-Route::get('/admin/category/create', 'CategoryDetailsController@create');
+    // Models Route Grouping
+    Route::group(array('prefix' => 'models'), function() {
+        Route::get('list', 'ModelDetailsController@index');
+        Route::get('edit/{id}', 'ModelDetailsController@edit');
+        Route::put('update/{id}', 'ModelDetailsController@update');
+        Route::get('create', 'ModelDetailsController@create');
+        Route::put('store', 'ModelDetailsController@store');
+        Route::get('delete/{id}', 'ModelDetailsController@destroy');
+    });
 
-Route::put('/admin/category/store', 'CategoryDetailsController@store');
+    // Wishlist Route Grouping
+    Route::group(array('prefix' => 'wishlist'), function() {
+        Route::get('list', 'WishlistsController@index');
+        Route::get('delete/{id}', 'WishlistsController@delete');
+    });
 
-Route::get('/admin/category/delete/{id}','CategoryDetailsController@destroy');
-
-
-
-//Routes for material_details
-Route::get('/material/list', 'MaterialDetailsController@index');
-
-Route::get('/admin/material/edit/{id}', 'MaterialDetailsController@edit');
-
-Route::put('/admin/material/update/{id}', 'MaterialDetailsController@update');
-
-Route::put('/admin/material/update/{id}', 'MaterialDetailsController@update');
-
-Route::get('/admin/material/create', 'MaterialDetailsController@create');
-
-Route::put('/admin/material/store', 'MaterialDetailsController@store');
-
-Route::get('/admin/material/delete/{id}','MaterialDetailsController@destroy');
-
-//routes for product_details
-Route::get('/admin/products/list', 'ProductDetailsController@index');
-
-Route::get('/admin/products/edit/{id}', 'ProductDetailsController@edit');
-
-Route::put('/admin/products/update/{id}', 'ProductDetailsController@update');
-
-Route::get('/admin/products/create', 'ProductDetailsController@create');
-
-Route::put('/admin/products/store', 'ProductDetailsController@store');
-
-Route::get('/admin/products/delete/{id}','ProductDetailsController@destroy');
-
-//routes for product_details
-Route::get('/admin/models/list', 'ModelDetailsController@index');
-
-Route::get('/admin/models/edit/{id}', 'ModelDetailsController@edit');
-
-Route::put('/admin/models/update/{id}', 'ModelDetailsController@update');
-
-Route::get('/admin/models/create', 'ModelDetailsController@create');
-
-Route::put('/admin/models/store', 'ModelDetailsController@store');
-
-Route::get('/admin/models/delete/{id}','ModelDetailsController@destroy');
-
-
-//Routes for wishlist_details
-Route::get('/admin/wishlist/list', 'WishlistsController@index');
-
-Route::get('/admin/wishlist/delete/{id}', 'WishlistsController@delete');
-
-//Routes for cart_details
-Route::get('/admin/cart/list', 'CartsController@index');
-
-Route::get('/admin/cart/edit/{id}', 'CartsController@edit');
-
-Route::get('/admin/cart/delete/{id}', 'CartsController@delete');
-
-Route::put('/admin/cart/update/{id}', 'CartsController@update');
+    // cart Route Grouping
+    Route::group(array('prefix' => 'cart'), function() {
+        Route::get('list', 'CartsController@index');
+        Route::get('edit/{id}', 'CartsController@edit');
+        Route::get('delete/{id}', 'CartsController@delete');
+        Route::put('update/{id}', 'CartsController@update');
+    });
+});
